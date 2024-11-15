@@ -9,7 +9,6 @@ const Home = () => {
   const dispatch:AppDispatch = useDispatch();
   const contacts = useSelector((state: RootState) => state.contacts.contacts);
   const [modal, setModal] = useState<Contact | null>(null);
-  console.log(contacts);
 
   useEffect(() => {
     dispatch(fetchAllContacts());
@@ -22,6 +21,7 @@ const Home = () => {
   const closeModal = () => {
     setModal(null);
   }
+
   return (
     <div>
       {modal &&  <ModalContact contacts={modal} closeModal = {closeModal} />}

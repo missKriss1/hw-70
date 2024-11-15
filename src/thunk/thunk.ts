@@ -22,3 +22,9 @@ export const fetchAddContact = createAsyncThunk ('contacts/fetchAddContact', asy
   const newPost = {...contact, id: response.data.name};
   return newPost
 })
+
+export const fetchDelateContact = createAsyncThunk<string, string>('contacts/fetchDelateContact', async (id: string) =>{
+  await axiosApi.delete(`contacts/${id}.json`);
+  console.log( id);
+  return id;
+})

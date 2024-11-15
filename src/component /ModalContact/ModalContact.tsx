@@ -1,5 +1,8 @@
 import { Contact } from '../../types';
 import * as React from 'react';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '../../app/store.ts';
+import { fetchDelateContact } from '../../thunk/thunk.ts';
 
 interface Props {
   contacts: Contact;
@@ -7,7 +10,14 @@ interface Props {
 }
 
 const ModalContact: React.FC <Props> = ({contacts, closeModal}) => {
+  const dispatch: AppDispatch = useDispatch();
+
   if (!contacts) return null;
+
+  const deleteContact = async (id:string) => {
+    await dispatch(fetchDelateContact(id))
+    closeModal();
+  }
   return (
     <div className="modal fade show" tabIndex={-1} style={{display: 'block', backgroundColor: 'rgba(0, 0, 0, 0.5)'}}>
       <div className="modal-dialog">
@@ -33,7 +43,7 @@ const ModalContact: React.FC <Props> = ({contacts, closeModal}) => {
             </div>
           </div>
           <div className="modal-footer">
-            <button type="button" className="btn btn-secondary">
+            <button type="button" className="btn btn-secondary" onClick={() => deleteContact(contacts.id)}>
                Delete
             </button>
             <button type="button" className="btn btn-primary">
