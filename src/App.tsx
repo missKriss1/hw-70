@@ -1,7 +1,8 @@
 import TollBar from './component /TollBar/TollBar.tsx';
 import { Route, Routes } from 'react-router-dom';
 import Home from './container/Home/Home.tsx';
-import ContactsAdd from './component /ContactsAdd/ContactsAdd.tsx';
+import AddContacts from './container/AddContacts/AddContacts.tsx';
+import EditContacts from './container/EditContacts/EditContacts.tsx';
 
   const App = () => {
     return (
@@ -12,7 +13,8 @@ import ContactsAdd from './component /ContactsAdd/ContactsAdd.tsx';
         <main>
           <Routes>
             <Route path='/' element={<Home/>}/>
-            <Route path='/add-new-contact' element={<ContactsAdd/>}/>
+            <Route path='/add-new-contact' element={<AddContacts/>}/>
+            <Route path='/edit-contact/:id' element={<EditContacts/>}/>
           </Routes>
         </main>
       </div>

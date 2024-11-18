@@ -3,6 +3,7 @@ import * as React from 'react';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../app/store.ts';
 import { fetchDelateContact } from '../../thunk/thunk.ts';
+import { Link } from 'react-router-dom';
 
 interface Props {
   contacts: Contact;
@@ -46,8 +47,8 @@ const ModalContact: React.FC <Props> = ({contacts, closeModal}) => {
             <button type="button" className="btn btn-secondary" onClick={() => deleteContact(contacts.id)}>
                Delete
             </button>
-            <button type="button" className="btn btn-primary">
-              Edit
+            <button type="button" className='btn bg-black'>
+              <Link to={`/edit-contact/${contacts.id}`} className="navbar-brand text-white fw-bold">Edit</Link>
             </button>
           </div>
         </div>
