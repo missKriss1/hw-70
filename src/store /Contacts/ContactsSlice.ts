@@ -1,5 +1,10 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { fetchAddContact, fetchAllContacts, fetchDelateContact } from '../../thunk/thunk.ts';
+import { createSlice } from "@reduxjs/toolkit";
+import {
+  fetchAddContact,
+  fetchAllContacts,
+  fetchDelateContact,
+} from "../../thunk/thunk.ts";
+import { Contact } from "../../types";
 
 interface ContactsState {
   contacts: Contact[];
@@ -11,10 +16,10 @@ export const initialState: ContactsState = {
   contacts: [],
   loading: false,
   error: false,
-}
+};
 
 const contactsSlice = createSlice({
-  name: 'contacts',
+  name: "contacts",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -49,13 +54,15 @@ const contactsSlice = createSlice({
       })
       .addCase(fetchDelateContact.fulfilled, (state, action) => {
         state.loading = false;
-        state.contacts = state.contacts.filter(contact => contact.id !== action.payload);
+        state.contacts = state.contacts.filter(
+          (contact) => contact.id !== action.payload,
+        );
       })
       .addCase(fetchDelateContact.rejected, (state) => {
         state.loading = false;
         state.error = true;
-      })
-  }
+      });
+  },
 });
 
 export const contactsReducer = contactsSlice.reducer;

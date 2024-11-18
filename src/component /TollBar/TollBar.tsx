@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const TollBar = () => {
   return (
@@ -13,14 +13,17 @@ const TollBar = () => {
             </div>
             <div>
               <button className=" btn bg-black">
-                  <Link to="/add-new-contact" className="navbar-brand text-white fw-bold">
-                    Add new contacts
-                  </Link>
+                <Link
+                  to="/add-new-contact"
+                  className="navbar-brand text-white fw-bold"
+                >
+                  Add new contacts
+                </Link>
               </button>
             </div>
           </div>
         </nav>
-        <hr/>
+        <hr />
       </div>
     </div>
   );
